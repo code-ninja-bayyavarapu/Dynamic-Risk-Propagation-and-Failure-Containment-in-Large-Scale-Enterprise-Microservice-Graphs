@@ -1,0 +1,39 @@
+# Default experiment configuration
+# Run: python -m risk_containment.run_experiments --config configs/default.yaml
+
+graph:
+  type: scale_free  # scale_free | small_world | json
+  sizes: [50, 200, 500, 1000]
+  json_path: null   # e.g. risk_containment/online_boutique_graph.json
+
+simulation:
+  steps: 200
+  requests_per_entry: 30
+  seeds: 20
+
+strategies:
+  - NO_CONTAINMENT
+  - STATIC_CIRCUIT_BREAKER
+  - LOCAL_ONLY_ISOLATION
+  - RATE_LIMIT_ONLY
+  - OURS
+  - OURS_NO_HYSTERESIS
+  - OURS_NO_CAP
+  - OURS_NO_SMOOTHING
+  - OURS_NO_IMPACT_AWARE
+
+scenarios:
+  - S1
+  - S2
+  - S3
+  - S4
+
+output:
+  dir: outputs
+  summary_csv: outputs/summary.csv
+  timeseries_dir: outputs/timeseries
+  figures_dir: outputs/figures
+
+# Quick/sanity run (override from CLI or use a separate small config)
+# graph.sizes: [50]
+# simulation.seeds: 3

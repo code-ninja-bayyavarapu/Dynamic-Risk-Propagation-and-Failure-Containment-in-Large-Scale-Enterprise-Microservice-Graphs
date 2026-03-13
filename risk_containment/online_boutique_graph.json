@@ -1,0 +1,29 @@
+{
+  "nodes": [
+    {"id": "frontend", "base_failure_prob": 0.008, "criticality_weight": 5, "sla_tier": "gold", "capacity": 200},
+    {"id": "cart", "base_failure_prob": 0.01, "criticality_weight": 5, "sla_tier": "gold", "capacity": 150},
+    {"id": "product-catalog", "base_failure_prob": 0.01, "criticality_weight": 5, "sla_tier": "gold", "capacity": 120},
+    {"id": "recommendation", "base_failure_prob": 0.012, "criticality_weight": 3, "sla_tier": "silver", "capacity": 80},
+    {"id": "checkout", "base_failure_prob": 0.008, "criticality_weight": 5, "sla_tier": "gold", "capacity": 100},
+    {"id": "payment", "base_failure_prob": 0.006, "criticality_weight": 5, "sla_tier": "gold", "capacity": 90},
+    {"id": "shipping", "base_failure_prob": 0.015, "criticality_weight": 4, "sla_tier": "silver", "capacity": 70},
+    {"id": "currency", "base_failure_prob": 0.01, "criticality_weight": 3, "sla_tier": "silver", "capacity": 60},
+    {"id": "ad", "base_failure_prob": 0.02, "criticality_weight": 1, "sla_tier": "bronze", "capacity": 50},
+    {"id": "email", "base_failure_prob": 0.015, "criticality_weight": 2, "sla_tier": "bronze", "capacity": 40}
+  ],
+  "edges": [
+    {"from": "frontend", "to": "cart", "call_rate_weight": 0.9, "coupling_weight": 0.8, "is_critical_path": true},
+    {"from": "frontend", "to": "product-catalog", "call_rate_weight": 0.95, "coupling_weight": 0.9, "is_critical_path": true},
+    {"from": "frontend", "to": "recommendation", "call_rate_weight": 0.5, "coupling_weight": 0.4, "is_critical_path": false},
+    {"from": "frontend", "to": "ad", "call_rate_weight": 0.3, "coupling_weight": 0.2, "is_critical_path": false},
+    {"from": "cart", "to": "product-catalog", "call_rate_weight": 0.6, "coupling_weight": 0.5, "is_critical_path": true},
+    {"from": "cart", "to": "checkout", "call_rate_weight": 0.85, "coupling_weight": 0.85, "is_critical_path": true},
+    {"from": "checkout", "to": "payment", "call_rate_weight": 0.95, "coupling_weight": 0.95, "is_critical_path": true},
+    {"from": "checkout", "to": "currency", "call_rate_weight": 0.7, "coupling_weight": 0.5, "is_critical_path": false},
+    {"from": "checkout", "to": "shipping", "call_rate_weight": 0.8, "coupling_weight": 0.7, "is_critical_path": true},
+    {"from": "checkout", "to": "email", "call_rate_weight": 0.4, "coupling_weight": 0.3, "is_critical_path": false},
+    {"from": "product-catalog", "to": "recommendation", "call_rate_weight": 0.4, "coupling_weight": 0.3, "is_critical_path": false}
+  ],
+  "entry_nodes": ["frontend"],
+  "sink_nodes": ["payment", "shipping", "email", "ad", "recommendation", "currency"]
+}

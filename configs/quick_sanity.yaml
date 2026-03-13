@@ -1,0 +1,23 @@
+# Minimal sanity run: 1 size, 2 seeds, 2 strategies, 2 scenarios
+graph:
+  type: scale_free
+  sizes: [50]
+
+simulation:
+  steps: 50
+  requests_per_entry: 20
+  seeds: 2
+
+strategies:
+  - NO_CONTAINMENT
+  - OURS
+
+scenarios:
+  - S1
+  - S2
+
+output:
+  dir: outputs/sample_run
+  summary_csv: outputs/sample_run/summary.csv
+  timeseries_dir: outputs/sample_run/timeseries
+  figures_dir: outputs/sample_run/figures

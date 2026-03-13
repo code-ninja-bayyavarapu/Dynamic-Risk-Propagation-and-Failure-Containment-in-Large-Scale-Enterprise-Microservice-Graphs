@@ -1,0 +1,30 @@
+# Full validation experiment: used by scripts/run_experiments.py
+# Graph sizes 50, 200, 500 (1000 optional); 20 seeds; 200 steps; all strategies and scenarios
+
+graph:
+  type: scale_free
+  sizes: [50, 200, 500]
+
+simulation:
+  steps: 200
+  requests_per_entry: 30
+  seeds: 20
+
+strategies:
+  - NO_CONTAINMENT
+  - STATIC_CIRCUIT_BREAKER
+  - LOCAL_ONLY_ISOLATION
+  - RATE_LIMIT_ONLY
+  - OURS
+
+scenarios:
+  - S1   # latency spike in core dependency
+  - S2   # zone outage (correlated node failures)
+  - S3   # noisy neighbor overload
+  - S4   # rolling failures
+
+output:
+  dir: outputs/experiments
+  summary_csv: outputs/experiments/summary.csv
+  timeseries_dir: outputs/experiments/timeseries
+  figures_dir: paper/figures
