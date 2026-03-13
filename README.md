@@ -74,3 +74,16 @@ PYTHONPATH=. pytest tests/ -v
 | `configs/` | YAML configs (graph sizes, seeds, strategies, scenarios) |
 
 Experiments are deterministic for a given seed and config.
+
+---
+
+## Updating the repo
+
+After local changes (no paper, outputs, or `idea.txt`):
+
+```bash
+git add -A
+git status   # confirm only intended files
+git commit -m "Your message"
+git push origin master
+```
