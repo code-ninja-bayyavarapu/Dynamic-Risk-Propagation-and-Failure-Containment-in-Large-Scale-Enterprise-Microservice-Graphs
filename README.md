@@ -8,14 +8,18 @@ Simulator and experiment pipeline for microservice cascade containment (graph-ba
 
 ## Run in Google Colab
 
-1. Open [Colab](https://colab.research.google.com/), **File → Open notebook** (or upload).
-2. **Clone and go to project root:**
+**Open the notebook directly from GitHub (no clone needed):**  
+**[Open in Colab](https://colab.research.google.com/github/code-ninja-bayyavarapu/Dynamic-Risk-Propagation-and-Failure-Containment-in-Large-Scale-Enterprise-Microservice-Graphs/blob/master/notebooks/microservice_cascade_experiments.ipynb)**
+
+Or: Colab → **File → Open notebook** → paste the GitHub URL of the repo or the `.ipynb` file.
+
+When opening from the link above, the repo is already loaded; run all cells (install deps, then run experiments). Skip the clone cell if the notebook says "already in project root."
+
    ```python
    !git clone https://github.com/code-ninja-bayyavarapu/Dynamic-Risk-Propagation-and-Failure-Containment-in-Large-Scale-Enterprise-Microservice-Graphs.git
    %cd Dynamic-Risk-Propagation-and-Failure-Containment-in-Large-Scale-Enterprise-Microservice-Graphs
    ```
-3. Open **`notebooks/microservice_cascade_experiments.ipynb`** in Colab (upload it or open from the cloned folder).
-4. **Run all cells.** The notebook will:
+2. **Run all cells.** The notebook will:
    - Install dependencies (`numpy`, `pandas`, `networkx`, `matplotlib`, `pyyaml`, `tqdm`)
    - Run experiments (default quick run: 50 nodes, 2 seeds)
    - Generate figures and show summary table

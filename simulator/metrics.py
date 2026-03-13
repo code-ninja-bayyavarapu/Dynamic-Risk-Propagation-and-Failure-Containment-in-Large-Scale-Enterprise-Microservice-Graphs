@@ -59,7 +59,7 @@ class SimulationMetrics:
             }
         cascade_sizes = [_cascade_size(s) for s in self.snapshots]
         total_failed = sum(s.get("n_failed", 0) for s in self.snapshots)
-        sla = sum(1 for s in self.snapshots if (s.get("n_failed", 0) + s.get("n_degraded", 0) > 0 and self._gold)
+        sla = sum(1 for s in self.snapshots if (s.get("n_failed", 0) + s.get("n_degraded", 0) > 0 and self._gold))
         throughput = sum(s.get("n_healthy", 0) * 0.5 for s in self.snapshots)
         n_nodes = len(self.G.nodes())
         mttr = 0
